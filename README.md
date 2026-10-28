@@ -51,7 +51,7 @@ terminal in the folder containing `root.sh`.
 
 ### 2. Connect the phone
 
-Enable **Developer options → USB debugging**, connect the USB cable and accept
+Enable **Developer options > USB debugging**, connect the USB cable and accept
 the debugging authorization prompt on the phone.
 
 ```bash
