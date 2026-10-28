@@ -1,0 +1,18 @@
+# In-tree build output.  build.sh writes to
+# ${XDG_CACHE_HOME:-$HOME/.cache}/ghostlock-ldy-an00/ by default, so a clean
+# checkout normally has none of these.
+/build/
+/device_root_aarch64
+*.o
+
+# Runtime state and logs (the tooling keeps its state in the cache directory).
+.root-state
+/run.log
+*.log
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
