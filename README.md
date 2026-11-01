@@ -1,8 +1,9 @@
 # GhostLock for HONOR LDY-AN00
 
 Temporary root access for the **HONOR Magic8 Pro Air (LDY-AN00)** using
-CVE-2026-43499, also known as GhostLock. The launcher builds the exploit from
-source and opens a root shell over an authorized ADB connection.
+CVE-2026-43499, also known as GhostLock. The launcher opens a root shell over
+an authorized ADB connection. Release bundles include prebuilt binaries;
+source checkouts build them locally.
 
 **Status:** verified on one physical device with the exact firmware below.
 Root and permissive SELinux last until reboot. The bootloader can remain locked;
@@ -43,11 +44,21 @@ On Debian or Ubuntu:
 
 ```bash
 sudo apt update
-sudo apt install adb gcc-aarch64-linux-gnu libc6-dev-arm64-cross
+sudo apt install adb unzip
 ```
 
-Download and extract this repository, or clone it after publication. Open a
-terminal in the folder containing `root.sh`.
+Download `honor-ldy-an00-ghostlock-v1.0.0-linux.zip` and `SHA256SUMS` from
+[Releases](https://github.com/iodn/honor-ldy-an00-ghostlock/releases/tag/v1.0.0).
+Keep both downloads in the same folder, then run:
+
+```bash
+sha256sum -c SHA256SUMS
+unzip honor-ldy-an00-ghostlock-v1.0.0-linux.zip
+cd honor-ldy-an00-ghostlock-v1.0.0-linux
+```
+
+Use the release ZIP, not GitHub's automatic source archive, to avoid compiling.
+The launcher verifies the included binaries before any phone operation.
 
 ### 2. Connect the phone
 
@@ -74,7 +85,8 @@ bash root.sh
 
 Keep the terminal open. Unlock the phone again if it reboots. The exploit usually
 takes **one to six minutes**; elapsed time varies with the timing-based leak.
-The launcher builds its binaries, uploads them to `/data/local/tmp`, checks
+The launcher selects the verified release binaries (or builds a source checkout),
+uploads them to `/data/local/tmp`, checks
 available on-device SHA-256 results against the local builds and opens a shell.
 
 When the root prompt appears, run these commands **inside that phone shell**:
@@ -159,7 +171,10 @@ and caused a stack-canary panic during development.
 
 ## Build without running
 
+For a source checkout, install the cross-compiler first:
+
 ```bash
+sudo apt install gcc-aarch64-linux-gnu libc6-dev-arm64-cross
 bash build.sh
 ```
 

@@ -32,6 +32,7 @@ STATE_FILE="$CACHE_DIR/root-state"
 SERIAL=""
 REBOOT_MODE="auto"      # auto | yes | no
 FORCE=0
+USE_PREBUILT=0
 
 usage() {
     cat <<EOF
@@ -59,6 +60,17 @@ while [ $# -gt 0 ]; do
         *) die "unknown option '$1' (see --help)" ;;
     esac
 done
+
+# Release bundles contain the exact published ARM64 binaries. Check them before
+# any ADB operation, including a clean-boot reboot. Source checkouts still build.
+if [ -d "$PWD/prebuilt" ]; then
+    BIN_HOST="$PWD/prebuilt/device_root_aarch64"
+    SU_HOST="$PWD/prebuilt/su"
+    [ -f "$BIN_HOST" ] && [ -f "$SU_HOST" ] || die "incomplete prebuilt bundle; download it again"
+    [ "$(sha256sum "$BIN_HOST" | awk '{print $1}')" = "$REF_SHA" ] || die "prebuilt exploit checksum mismatch"
+    [ "$(sha256sum "$SU_HOST" | awk '{print $1}')" = "f084e68295a2ac23693cef9133a8586219ff08eb5b5dc8d89a3cb954672f93f3" ] || die "prebuilt broker checksum mismatch"
+    USE_PREBUILT=1
+fi
 
 command -v adb >/dev/null 2>&1 || die "adb not found; install Android platform-tools"
 ADB=(adb)
@@ -138,8 +150,13 @@ if [ "$need_reboot" -eq 1 ]; then
     sleep 2
 fi
 
-log "building the exploit and the su broker from source"
-./build.sh "$BIN_HOST" "$SU_HOST"
+if [ "$USE_PREBUILT" -eq 1 ]; then
+    log "using the verified release binaries (no compiler required)"
+    mkdir -p "$CACHE_DIR"
+else
+    log "building the exploit and the su broker from source"
+    ./build.sh "$BIN_HOST" "$SU_HOST"
+fi
 sha=$(sha256sum "$BIN_HOST" | awk '{print $1}')
 su_sha=$(sha256sum "$SU_HOST" | awk '{print $1}')
 if [ "$sha" != "$REF_SHA" ]; then
