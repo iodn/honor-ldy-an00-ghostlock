@@ -17,29 +17,6 @@ For bootloader patching after obtaining root, see the companion
 > A delayed kernel panic has been observed. Run only one exploit chain per boot,
 > save important data first, and reboot when finished.
 
-## Firmware downloads and GhostLock status
-
-The status below is a firmware-family assessment, not individual exploit
-testing of every package.
-These are full stock firmware packages from the 2026-10-24 catalog snapshot,
-not LineageOS OTA update ZIPs.
-
-| Firmware | Official HONOR download | GhostLock |
-| --- | --- | --- |
-| 10.0.0.170 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00064878) | Vulnerable |
-| 10.0.0.160 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00061008) | Vulnerable |
-| 10.0.0.155 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00059699) | Vulnerable |
-| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058674) | Vulnerable |
-| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058120) | Vulnerable |
-| 10.0.0.135 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00056639) | Vulnerable |
-| 10.0.0.130 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00055504) | Vulnerable |
-| 10.0.0.127 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054591) | Vulnerable |
-| 10.0.0.113 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054061) | Vulnerable |
-| 10.0.0.112 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00053695) | Vulnerable |
-
-Vulnerability does not establish compatibility with this launcher, the LK patch
-or the ROM installer. Their exact kernel, image and partition checks still apply.
-
 ## Tested root configuration
 
 | Item | Tested value |
@@ -345,6 +322,26 @@ the firmware, kernel version, command used and relevant terminal output. Remove
 serial numbers, credentials and other personal information before sharing logs.
 Compatibility reports must distinguish successful root from a stable session;
 one successful run does not establish reliability on another device.
+
+## Firmware downloads and GhostLock status
+
+The status below is a firmware-family assessment, not individual exploit
+testing of every package.
+Official HONOR full firmware packages for stock restoration, from the
+2026-10-24 catalog snapshot. These are not LineageOS OTA update ZIPs.
+
+| Firmware | Official HONOR download | GhostLock |
+| --- | --- | --- |
+| 10.0.0.170 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00064878) | Vulnerable |
+| 10.0.0.160 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00061008) | Vulnerable |
+| 10.0.0.155 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00059699) | Vulnerable |
+| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058674) | Vulnerable |
+| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058120) | Vulnerable |
+| 10.0.0.135 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00056639) | Vulnerable |
+| 10.0.0.130 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00055504) | Vulnerable |
+| 10.0.0.127 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054591) | Vulnerable |
+| 10.0.0.113 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054061) | Vulnerable |
+| 10.0.0.112 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00053695) | Vulnerable |
 
 ## Credits
 
