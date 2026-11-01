@@ -5,7 +5,8 @@ CVE-2026-43499, also known as GhostLock. The launcher opens a root shell over
 an authorized ADB connection. Release bundles include prebuilt binaries;
 source checkouts build them locally.
 
-**Status:** verified on one physical device with the exact firmware below.
+**Status:** root tested on **10.0.0.113**. Static analysis also found the
+vulnerable code in **10.0.0.170**; older releases may also be affected.
 Root and permissive SELinux last until reboot. The bootloader can remain locked;
 this tool does not unlock it or install persistent root.
 
@@ -16,21 +17,21 @@ For bootloader patching after obtaining root, see the companion
 > A delayed kernel panic has been observed. Run only one exploit chain per boot,
 > save important data first, and reboot when finished.
 
-## Supported configuration
+## Tested root configuration
 
-| Item | Required value |
+| Item | Tested value |
 | --- | --- |
 | Phone | HONOR Magic8 Pro Air |
 | Model / stock device name | `LDY-AN00` / `HNLDY-M` |
 | SoC | MediaTek MT6993 |
-| Firmware | `10.0.0.113(C00E100R101P1)` |
+| Tested firmware | `10.0.0.113(C00E100R101P1)` |
 | Android | 16 |
 | Kernel | `6.12.38-android16-5-g4b3671e1f5b7-abogki460618149-4k` |
 | Architecture | ARM64, 4 KB pages |
 
-Other devices, firmware versions and kernel builds are unsupported. The launcher
-checks the model and kernel, but those checks do not establish compatibility with
-other firmware. Kernel addresses and structure offsets are specific to this port.
+Vulnerability does not guarantee this launcher works unchanged on another
+firmware. Its addresses and offsets target the tested kernel; keep the model
+and kernel checks enabled. Other devices have not been qualified.
 
 ## Quick start
 
