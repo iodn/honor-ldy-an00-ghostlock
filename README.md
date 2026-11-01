@@ -5,8 +5,8 @@ CVE-2026-43499, also known as GhostLock. The launcher opens a root shell over
 an authorized ADB connection. Release bundles include prebuilt binaries;
 source checkouts build them locally.
 
-**Status:** root tested on **10.0.0.113**. Static analysis also found the
-vulnerable code in **10.0.0.170**; older releases may also be affected.
+**Status:** root tested on **10.0.0.113**. Vulnerable code also verified in
+**10.0.0.170**; findings for all cataloged versions are listed below.
 Root and permissive SELinux last until reboot. The bootloader can remain locked;
 this tool does not unlock it or install persistent root.
 
@@ -16,6 +16,29 @@ For bootloader patching after obtaining root, see the companion
 > **Known stability issue:** the exploit leaves modified RT-mutex state behind.
 > A delayed kernel panic has been observed. Run only one exploit chain per boot,
 > save important data first, and reboot when finished.
+
+## Firmware downloads and GhostLock status
+
+All listed versions are reported vulnerable to GhostLock. The evidence column
+separates root testing, binary analysis and owner reports.
+These are full stock firmware packages from the 2026-10-24 catalog snapshot,
+not LineageOS OTA update ZIPs.
+
+| Firmware | Official HONOR download | GhostLock | Evidence |
+| --- | --- | --- | --- |
+| 10.0.0.170 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00064878) | Vulnerable | Vulnerable code verified |
+| 10.0.0.160 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00061008) | Vulnerable | Owner-reported |
+| 10.0.0.155 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00059699) | Vulnerable | Owner-reported |
+| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058674) | Vulnerable | Owner-reported |
+| 10.0.0.150 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00058120) | Vulnerable | Owner-reported |
+| 10.0.0.135 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00056639) | Vulnerable | Owner-reported |
+| 10.0.0.130 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00055504) | Vulnerable | Owner-reported |
+| 10.0.0.127 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054591) | Vulnerable | Owner-reported |
+| 10.0.0.113 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00054061) | Vulnerable | Root tested |
+| 10.0.0.112 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00053695) | Vulnerable | Owner-reported |
+
+Vulnerability does not establish compatibility with this launcher, the LK patch
+or the ROM installer. Their exact kernel, image and partition checks still apply.
 
 ## Tested root configuration
 
