@@ -332,6 +332,7 @@ Official HONOR full firmware packages for stock restoration, from the
 
 | Firmware | Official HONOR download | GhostLock |
 | --- | --- | --- |
+| 11.0.0.117 | [Download](https://update.hihonorcdn.com/TDS/data/bl/files/v941663/f1/full/update_full_base.zip) | Fixed Not Vulnerable |
 | 10.0.0.170 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00064878) | Vulnerable |
 | 10.0.0.160 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00061008) | Vulnerable |
 | 10.0.0.155 | [Download](https://iknow.service.hihonor.com/weknow/servlet/download/public?contextNo=W00059699) | Vulnerable |
